@@ -1,0 +1,134 @@
+/* Full-screen wrapper to center login box */
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  padding: 20px;
+}
+
+/* Login form container */
+.loginContainer {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form layout */
+.formBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.loginHeading {
+  font-family: var(--font-body); /* Unified font */
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Inputs and dropdowns */
+.inputField,
+.selectField {
+  font-family: var(--font-body);
+  width: 100%;  /* Ensure both inputs and dropdowns are the same width */
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  box-sizing: border-box;  /* Ensures padding and borders are included in width */
+}
+
+/* Focus styling for inputs and dropdowns */
+.inputField:focus,
+.selectField:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Buttons */
+.submitButton,
+.backButton {
+  font-family: var(--font-body);
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton {
+  background-color: var(--primary-color);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.submitButton:hover {
+  background-color: var(--hover-color);
+}
+
+.backButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.backButton:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .loginHeading {
+    font-size: 1.75rem;
+  }
+
+  .inputField,
+  .selectField,
+  .submitButton,
+  .backButton {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backButton {
+    margin-top: 5px;
+  }
+}
+/* Consistent spacing for labels */
+.labelField {
+    display: block;
+    width: 100%;
+    margin: 15px 0 5px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: black;
+    text-align: center; /* 👈 center the label text */
+    font-family: var(--font-body); /* Unified font */
+    margin-top: 0px;;
+  }
+  
+  .loginContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+  

@@ -1,0 +1,14 @@
+:root {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-logo: "Poppins", sans-serif;
+
+  --primary-color: #3f8efc;
+  --hover-color: #2e7be6;
+
+  --text-color: #2f2f2f;
+  --bg-color: #f5f7fa;
+  --hover-bg: rgba(63, 142, 252, 0.1);
+}

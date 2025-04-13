@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+  }
+  
+  .heading {
+    font-family: var(--font-body);
+    color: black;
+    font-size: 2rem;
+  }
+  

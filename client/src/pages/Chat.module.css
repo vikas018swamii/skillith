@@ -1,0 +1,164 @@
+.chatContainer {
+    font-family: var(--font-body);
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.chatHeading {
+    font-family: var(--font-body);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.chatMessages {
+    font-family: var(--font-body);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.chatMessage {
+    font-family: var(--font-body);
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;    
+}
+
+.sent {
+    background-color: var(--hover-bg);
+    text-align: right;
+}
+
+.received {
+    background-color: #eee;
+    text-align: left;
+}
+
+.chatControls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between; /* For larger screens */
+}
+
+.chatInput {
+    font-family: var(--font-body);
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.chatInput:focus {
+    border-color: #3f8efc; /* Or any color you like */
+    outline: none;
+  }
+  
+
+.chatSend,
+.chatDelete {
+    font-family: var(--font-body);
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.chatSend {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.chatDelete {
+    background-color: #f44336;
+    color: white;
+}
+
+.chatSend:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+}
+
+.chatDelete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .chatContainer {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .chatHeading {
+        font-size: 1.3rem;
+    }
+
+    .chatMessages {
+        height: 250px;
+    }
+
+    .chatInput {
+        padding: 6px 10px;
+        font-size: 0.875rem;
+    }
+
+    .chatSend,
+    .chatDelete {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    .chatControls {
+        flex-direction: row; /* Align buttons horizontally */
+        gap: 8px; /* Space between buttons */
+        justify-content: flex-start; /* Align buttons to the left */
+    }
+}
+
+/* Adjustments for very small screens (e.g., phones in portrait mode) */
+@media (max-width: 480px) {
+    .chatContainer {
+        padding: 10px;
+    }
+
+    .chatMessages {
+        height: 200px;
+    }
+
+    .chatInput {
+        font-size: 0.75rem;
+    }
+
+    .chatSend,
+    .chatDelete {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    .chatControls {
+        flex-direction: row; /* Ensure buttons are aligned horizontally */
+        gap: 6px;
+        justify-content: flex-start; /* Keep buttons aligned to the left */
+    }
+
+    .chatSend,
+    .chatDelete {
+        width: auto; /* Ensure buttons don't stretch to full width */
+    }
+}

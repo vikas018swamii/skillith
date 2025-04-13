@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Inter:wght@400;500;600&display=swap");
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  border-radius: 8px; 
+}
+
+.navbar:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Increase shadow on hover */
+}
+
+
+.logo {
+  font-size: 1.5rem;
+  font-family: var(--font-logo);
+  color: var(--primary-color);
+  letter-spacing:1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease; 
+  padding-left: 1rem;
+
+}
+
+.logo:hover {
+  transform: scale(1.025);
+}
+
+.menuButton {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.menuButton .line {
+  width: 22.5px; /* Adjusted to 0.75 of the original size (30px) */
+  height: 3px; /* Adjusted to 0.75 of the original size (4px) */
+  background-color: var(--primary-color);
+  margin: 3.75px 0; /* Adjusted to 0.75 of the original spacing (5px) */
+  border-radius: 2px; /* Slightly rounded edges for a smoother look */
+  transition: transform 0.3s ease;
+}
+
+.menuButton:hover .line {
+  background-color: var(--hover-color); /* Hover effect for the lines */
+}
+
+.menuButton:hover {
+  transform: scale(1.1); /* Slight scale-up effect on hover */
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 6px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--hover-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.link:hover {
+  color: var(--hover-color);
+}
+
+.link:hover::after {
+  transform: scaleX(1); /* Underline effect */
+}
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .logo{
+    padding-left: 0rem;
+  }
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    z-index: -1;
+    padding: 20px 0;
+    opacity: 0;
+  }
+
+  .navLinks.open {
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 1000;
+  }
+
+  .link { 
+    margin: 10px 0;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.3s ease;
+  }
+
+  .navLinks.open .link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+}
