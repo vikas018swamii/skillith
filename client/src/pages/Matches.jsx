@@ -13,7 +13,7 @@ const Matches = () => {
     const fetchMatches = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/users/matches', {
+        const res = await axios.get('https://skillith.onrender.com/api/users/matches', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -5,7 +5,7 @@ import ConfirmationModal from "./ConfirmationModal";
 import styles from "./Chat.module.css"; 
 
 
-const socket = io("http://localhost:5000", {
+const socket = io("https://skillith.onrender.com", {
   transports: ["websocket"],
 });
 
@@ -19,14 +19,14 @@ function Chat({ recipientId, recipientName }) {
     const fetchUserIdAndMessages = async () => {
       try {
         const token = localStorage.getItem("token");
-        const userRes = await axios.get("http://localhost:5000/api/users/me", {
+        const userRes = await axios.get("https://skillith.onrender.com/api/users/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const fetchedUserId = userRes.data._id;
         setUserId(fetchedUserId);
 
         const messagesRes = await axios.get(
-          `http://localhost:5000/messages/${fetchedUserId}/${recipientId}`
+          `https://skillith.onrender.com/messages/${fetchedUserId}/${recipientId}`
         );
         setMessages(messagesRes.data);
 
@@ -54,7 +54,7 @@ function Chat({ recipientId, recipientName }) {
     if (!message.trim()) return;
     const msgObj = { sender: userId, recipient: recipientId, message };
     try {
-      await axios.post("http://localhost:5000/messages", msgObj);
+      await axios.post("https://skillith.onrender.com/messages", msgObj);
       socket.emit("sendPrivateMessage", msgObj);
       setMessages((prev) => [...prev, msgObj]);
       setMessage("");
@@ -70,7 +70,7 @@ function Chat({ recipientId, recipientName }) {
     
     try {
       await axios.delete(
-        `http://localhost:5000/messages/${userId}/${recipientId}`
+        `https://skillith.onrender.com/messages/${userId}/${recipientId}`
       );
       setMessages([]);
       setIsModalOpen(false);

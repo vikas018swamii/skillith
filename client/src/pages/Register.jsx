@@ -26,7 +26,7 @@ function Register() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', form);
+      await axios.post('https://skillith.onrender.com/api/auth/register', form);
       alert('Registered successfully!');
       navigate('/');
     } catch (err) {
