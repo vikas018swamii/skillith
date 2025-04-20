@@ -9,10 +9,13 @@ const skills = ['JavaScript', 'C++', 'Python', 'React', 'Node.js', 'HTML/CSS', '
 function Register() {
   const [form, setForm] = useState({
     username: '',
+    email: '', // Add email to the form state
     password: '',
     knownSkill: '',
     wantToLearn: ''
   });
+
+  const [message, setMessage] = useState(''); // To show any status messages
 
   const navigate = useNavigate();
 
@@ -27,11 +30,16 @@ function Register() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post(`${API}/api/auth/register`, form);
-      alert('Registered successfully!');
-      navigate('/');
+      // Make POST request to register the user
+      const response = await axios.post(`${API}/api/auth/register`, form);
+      
+      // Display a message indicating registration success
+      setMessage('Registered successfully! Please check your email to verify your account.');
+      
+      // Optionally, you can redirect to a different page or prompt the user to check their email
+      navigate('/login'); // Redirect to login page after successful registration (you can change this as needed)
     } catch (err) {
-      alert(err.response?.data?.msg || 'Registration error');
+      setMessage(err.response?.data?.msg || 'Registration error');
     }
   };
 
@@ -40,9 +48,20 @@ function Register() {
       <div className={styles.loginContainer}>
         <form onSubmit={handleSubmit} className={styles.formBox}>
           <h2 className={styles.loginHeading}>Register</h2>
+          
+          {message && <p className={styles.message}>{message}</p>} {/* Display status message */}
+          
           <input 
             name="username" 
             placeholder="Username" 
+            onChange={handleChange} 
+            required 
+            className={styles.inputField} 
+          />
+          <input 
+            name="email" 
+            type="email" 
+            placeholder="Email" 
             onChange={handleChange} 
             required 
             className={styles.inputField} 
@@ -55,34 +74,34 @@ function Register() {
             required 
             className={styles.inputField} 
           />
-
           
-<select
-  name="knownSkill"
-  value={form.knownSkill}
-  onChange={handleChange}
-  required
-  className={`${styles.inputField} ${styles.selectField}`} // Add this line
->
-  <option value="">Skill Known</option>
-  {skills.map(skill => (
-    <option key={skill} value={skill}>{skill}</option>
-  ))}
-</select>
+          {/* Skill Selection for Known Skill */}
+          <select
+            name="knownSkill"
+            value={form.knownSkill}
+            onChange={handleChange}
+            required
+            className={`${styles.inputField} ${styles.selectField}`} // Add this line for additional styling
+          >
+            <option value="">Skill Known</option>
+            {skills.map(skill => (
+              <option key={skill} value={skill}>{skill}</option>
+            ))}
+          </select>
 
-<select
-  name="wantToLearn"
-  value={form.wantToLearn}
-  onChange={handleChange}
-  required
-  className={`${styles.inputField} ${styles.selectField}`} // Add this line
->
-  <option value="">Skill to Learn</option>
-  {skills.map(skill => (
-    <option key={skill} value={skill}>{skill}</option>
-  ))}
-</select>
-
+          {/* Skill Selection for Skill to Learn */}
+          <select
+            name="wantToLearn"
+            value={form.wantToLearn}
+            onChange={handleChange}
+            required
+            className={`${styles.inputField} ${styles.selectField}`} // Add this line for additional styling
+          >
+            <option value="">Skill to Learn</option>
+            {skills.map(skill => (
+              <option key={skill} value={skill}>{skill}</option>
+            ))}
+          </select>
 
           <button type="submit" className={styles.submitButton}>Register</button>
           <button type="button" onClick={handleBack} className={styles.backButton}>Back</button>

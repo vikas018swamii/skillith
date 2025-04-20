@@ -7,6 +7,9 @@ const socketIO = require('socket.io');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const messageRoutes = require('./routes/message');
+const bodyParser = require('body-parser');
+
+
 
 dotenv.config();
 
@@ -28,8 +31,8 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // <== add DELETE here
   credentials: true,  // Allow credentials (cookies, authorization headers)
 }));
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Routes
 app.use('/messages', messageRoutes);

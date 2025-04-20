@@ -140,7 +140,7 @@ function Chat({ recipientId, recipientName }) {
       <h3 className={styles.chatHeading}>
         Chatting with{" "}
      
-          {recipientName.toUpperCase()} 💬
+          {recipientName} 💬
         
         {/* Downward arrow for scrolling */}
         <button

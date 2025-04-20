@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import Chat from './pages/Chat';
+import VerifyEmail from './pages/VerifyEmail'; // Import the VerifyEmail component
 import './App.css'; // ✅ Import your CSS file
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/chat" element={<Chat />} />
+        <Route path="/verify-email" element={<VerifyEmail />} /> {/* Add this line */}
+
         </Routes>
       </main>
     </div>

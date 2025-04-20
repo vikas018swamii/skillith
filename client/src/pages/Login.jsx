@@ -6,11 +6,18 @@ import { API } from '../utils/api';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ username: '', password: '' });
+
+  const [form, setForm] = useState({
+    emailOrUsername: '',
+    password: ''
+  });
+  
+  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+  
 
   const handleBack = () => {
     navigate(-1);
@@ -19,12 +26,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("Form data being sent:", form);
+
       const res = await axios.post(`${API}/api/auth/login`, form);
+      console.log(res.data);
       localStorage.setItem('token', res.data.token);
       alert('Logged in!');
-      navigate('/matches');
+      navigate('/');
     } catch (err) {
-      alert(err.response?.data?.msg || 'Error');
+      alert(err.response?.data?.msg || 'Login failed');
     }
   };
 
@@ -33,19 +43,25 @@ const Login = () => {
       <div className={styles.loginContainer}>
         <form className={styles.formBox} onSubmit={handleSubmit}>
           <h2 className={styles.loginHeading}>Login</h2>
+     
           <input
-            className={styles.inputField}
-            name="username"
-            placeholder="Username"
-            onChange={handleChange}
-          />
-          <input
-            className={styles.inputField}
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
+  type="text"
+  name="emailOrUsername"
+  placeholder="Email or Username"
+  value={form.emailOrUsername}
+  onChange={handleChange}
+  required
+/>
+
+<input
+  type="password"
+  name="password"
+  placeholder="Password"
+  value={form.password}
+  onChange={handleChange}
+  required
+/>
+
           <div className={styles.buttonGroup}>
             <button type="submit" className={styles.submitButton}>Login</button>
             <button type="button" className={styles.backButton} onClick={handleBack}>Back</button>
