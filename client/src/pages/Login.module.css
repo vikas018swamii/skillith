@@ -3,63 +3,77 @@
   --font-logo: "Poppins", sans-serif;
 
   --primary-color: #3f8efc;
+  --primary-gradient: linear-gradient(135deg, #3f8efc, #83a4d4);
   --hover-color: #2e7be6;
-  --text-color: #2f2f2f;
-  --bg-color: #f5f7fa;
+  --danger-color: #dc3545;
+  --danger-hover: #c82333;
+
+  --text-color: #1e1e2f;
+  --bg-color: #f7f9fc;
   --hover-bg: rgba(63, 142, 252, 0.1);
+  --card-bg: #ffffff;
+
+  --radius: 12px;
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
+/* Layout */
 .pageWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--primary-color), #83a4d4);
+  background: var(--primary-gradient);
   padding: 20px;
 }
 
+/* Card Container */
 .loginContainer {
-  font-family: var(--font-body);
-  background-color: #fff;
+  background-color: var(--card-bg);
   color: var(--text-color);
-  padding: 40px 30px;
-  max-width: 400px;
+  font-family: var(--font-body);
+  padding: 48px 36px;
+  max-width: 420px;
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .loginContainer:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: var(--hover-shadow);
 }
 
+/* Form Box */
 .formBox {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
+/* Heading */
 .loginHeading {
   font-family: var(--font-logo);
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
   color: var(--primary-color);
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* Inputs */
 .inputField {
   font-family: var(--font-body);
-  width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 18px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
   font-size: 1rem;
-  background-color: white;
+  border: 1px solid #d0d5dd;
+  border-radius: var(--radius);
+  background-color: #fff;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -69,56 +83,60 @@
   box-shadow: 0 0 0 3px var(--hover-bg);
 }
 
+/* Buttons */
 .buttonGroup {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 14px;
   width: 100%;
+  margin-top: 10px;
 }
 
 .submitButton,
 .backButton {
-  font-family: var(--font-body);
   padding: 12px;
   font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 500;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: 500;
-  width: 50%;
+  width: 100%;
 }
 
+/* Primary Button */
 .submitButton {
   background-color: var(--primary-color);
-  color: white;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(63, 142, 252, 0.25);
 }
 
 .submitButton:hover {
   background-color: var(--hover-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px var(--hover-bg);
 }
 
+/* Danger Button */
 .backButton {
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--danger-color);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
 }
 
 .backButton:hover {
-  background-color: #c82333;
+  background-color: var(--danger-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .loginContainer {
-    padding: 30px 20px;
+    padding: 36px 24px;
   }
 
   .loginHeading {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .inputField,
@@ -130,12 +148,26 @@
 
 @media (max-width: 480px) {
   .loginContainer {
-    padding: 25px 18px;
+    padding: 28px 20px;
+  }
+
+  .loginHeading {
+    font-size: 1.75rem;
   }
 
   .inputField,
   .submitButton,
   .backButton {
     font-size: 0.9rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .submitButton,
+  .backButton {
+    width: 100%;
   }
 }

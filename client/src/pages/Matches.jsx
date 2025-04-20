@@ -10,6 +10,23 @@ const Matches = () => {
   const [error, setError] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  // Load selected user from localStorage on mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem('selectedUser');
+    if (storedUser) {
+      setSelectedUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // Save selected user to localStorage whenever it changes
+  useEffect(() => {
+    if (selectedUser) {
+      localStorage.setItem('selectedUser', JSON.stringify(selectedUser));
+    } else {
+      localStorage.removeItem('selectedUser');
+    }
+  }, [selectedUser]);
+
   useEffect(() => {
     const fetchMatches = async () => {
       try {
@@ -37,13 +54,21 @@ const Matches = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Skill Matches</h2>
+      {/* Conditionally render the heading only if no user is selected */}
+      {!selectedUser && <h2 className={styles.heading}>Skill Matches</h2>}
+
       {selectedUser ? (
         <div>
-          <button onClick={() => setSelectedUser(null)} className={styles.backButton}>
+          <button
+            onClick={() => setSelectedUser(null)}
+            className={styles.backButton}
+          >
             Back to Matches
           </button>
-          <Chat recipientId={selectedUser._id} recipientName={selectedUser.username} />
+          <Chat
+            recipientId={selectedUser._id}
+            recipientName={selectedUser.username}
+          />
         </div>
       ) : (
         <>

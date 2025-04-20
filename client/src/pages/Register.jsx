@@ -56,33 +56,33 @@ function Register() {
             className={styles.inputField} 
           />
 
-          <label className={styles.labelField}>Skill You Know</label>
-          <select 
-            name="knownSkill" 
-            value={form.knownSkill} 
-            onChange={handleChange} 
-            required 
-            className={styles.inputField}
-          >
-            <option value="">-- Select --</option>
-            {skills.map(skill => (
-              <option key={skill} value={skill}>{skill}</option>
-            ))}
-          </select>
+          
+<select
+  name="knownSkill"
+  value={form.knownSkill}
+  onChange={handleChange}
+  required
+  className={`${styles.inputField} ${styles.selectField}`} // Add this line
+>
+  <option value="">Skill Known</option>
+  {skills.map(skill => (
+    <option key={skill} value={skill}>{skill}</option>
+  ))}
+</select>
 
-          <label className={styles.labelField}>Skill You Want to Learn</label> 
-          <select 
-            name="wantToLearn" 
-            value={form.wantToLearn} 
-            onChange={handleChange} 
-            required 
-            className={styles.inputField}
-          >
-            <option value="">-- Select --</option>
-            {skills.map(skill => (
-              <option key={skill} value={skill}>{skill}</option>
-            ))}
-          </select>
+<select
+  name="wantToLearn"
+  value={form.wantToLearn}
+  onChange={handleChange}
+  required
+  className={`${styles.inputField} ${styles.selectField}`} // Add this line
+>
+  <option value="">Skill to Learn</option>
+  {skills.map(skill => (
+    <option key={skill} value={skill}>{skill}</option>
+  ))}
+</select>
+
 
           <button type="submit" className={styles.submitButton}>Register</button>
           <button type="button" onClick={handleBack} className={styles.backButton}>Back</button>

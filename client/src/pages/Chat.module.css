@@ -1,18 +1,3 @@
-:root {
-  background-color: #f5f7fa;
-  min-height: 100vh;
-
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-logo: "Poppins", sans-serif;
-
-  --primary-color: #3f8efc;
-  --hover-color: #2e7be6;
-
-  --text-color: #2f2f2f;
-  --bg-color: #f5f7fa;
-  --hover-bg: rgba(63, 142, 252, 0.1);
-}
-
 .chatContainer {
   font-family: var(--font-body);
   padding: 20px;
@@ -27,12 +12,13 @@
 }
 
 .chatHeading {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-color);
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Align items to space out */
   gap: 0.5rem;
   background-color: var(--bg-color);
   padding: 0.75rem 1.25rem;
@@ -40,6 +26,27 @@
   box-shadow: 0 4px 8px rgba(63, 142, 252, 0.08);
   transition: background-color 0.3s ease;
 }
+
+.chatHeading:hover {
+  box-shadow: 0 6px 12px rgba(63, 142, 252, 0.15);
+}
+
+.scrollToInputButton {
+  background: none;
+  border: none;
+  font-size: 24px; /* Adjust the size */
+  cursor: pointer;
+  color: #007bff; /* Initial blue color */
+  margin-left: 10px;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.scrollToInputButton:hover {
+  color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-4px); /* Slight upward movement */
+}
+
+
 
 .chatHeading:hover {
   box-shadow: 0 6px 12px rgba(63, 142, 252, 0.15);
@@ -59,11 +66,12 @@
   margin-bottom: 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  word-wrap: break-word; /* Ensure word wrapping inside chat container */
 }
 
-/* Date separator styling */
+
 .dateSeparator {
   text-align: center;
   color: #777;
@@ -76,85 +84,85 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Individual message bubble */
+.messageGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .chatMessage {
   display: flex;
-  flex-direction: row; /* Stack message text and timestamp */
-  align-items: flex-start; /* Align content inside the bubble */
-  max-width: 75%; /* Adjust the bubble width */
-  width: fit-content;
+  flex-direction: row;
+  align-items: flex-end;
   padding: 12px 16px;
-  border-radius: 16px;
+  border-radius: 20px;
   position: relative;
-  font-size: 0.95rem;
-  line-height: 1.4;
   word-wrap: break-word;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 8px; /* Spacing between messages */
-  gap: 8px; /* Space between message text and timestamp */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Ensure text wraps inside the bubble */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 6px;
+  width: fit-content;  /* Message takes only the space it needs */
+  max-width: 70%;      /* Limits message width but still allows it to grow with content */
 }
 
-
-
-/* Sent message style */
-/* Sent message style */
+/* Sent messages (right side) */
 .sent {
-  align-self: flex-end;
-/* Primary color for sent messages */
-background-color: var(--hover-bg); 
+  background-color: var(--hover-bg);
   color: var(--text-color);
   border-bottom-right-radius: 4px;
-  margin-left: auto;
-  margin-right: 4px;
+  margin-left: auto; /* Align sent messages to the right */
 }
 
-/* Received message style */
+/* Received messages (left side) */
 .received {
-  align-self: flex-start;
-  background-color: var(--bg-color); 
-/* Hover background color for received messages */
-  color: var(--text-color);
+  background-color: #f0f0f0;
   border-bottom-left-radius: 4px;
-  margin-right: auto;
-  margin-left: 4px;
+  margin-right: auto; /* Align received messages to the left */
 }
 
-/* Timestamp styling */
-.timestamp {
-  font-size: 0.7rem;
-  color: #777;
-  font-style: italic;
-  opacity: 0.7;
-  margin-top: 4px;
-  align-self: flex-end; /* Position timestamp at the bottom-right */
-}
 
-/* Optional tail for sent message */
+
+
+/* Optional tail for sent */
 .sent::after {
   content: '';
   position: absolute;
   bottom: 0;
-  right: -8px;
-  width: 16px;
-  height: 16px;
-  background-color: #dcf8c6;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--hover-bg);
   border-bottom-left-radius: 16px;
   z-index: -1;
   transform: translateY(-2px);
 }
 
-/* Optional tail for received message */
+
+
+/* Optional tail for received */
 .received::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: -8px;
-  width: 16px;
-  height: 16px;
-  background-color: #ece5dd;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #f0f0f0;
   border-bottom-right-radius: 16px;
   z-index: -1;
   transform: translateY(-2px);
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+  opacity: 0.6;
+  white-space: nowrap;
+  margin-left: 10px;
+  flex-shrink: 0;
 }
 
 .chatControls {
@@ -177,7 +185,7 @@ background-color: var(--hover-bg);
 }
 
 .chatInput:focus {
-  border-color: var(--primary-color);
+  border-color: #3f8efc;
   outline: none;
 }
 
@@ -197,6 +205,7 @@ background-color: var(--hover-bg);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .chatSend {
@@ -215,7 +224,6 @@ background-color: var(--hover-bg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
   .chatContainer {
     padding: 15px;

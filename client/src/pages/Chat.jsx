@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import ConfirmationModal from "./ConfirmationModal";
@@ -13,7 +13,9 @@ function Chat({ recipientId, recipientName }) {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [userId, setUserId] = useState(null);
-  
+
+  const chatMessagesRef = useRef(null); // Reference for the chat messages container
+  const chatInputRef = useRef(null); // Reference for the chat input field
 
   useEffect(() => {
     const fetchUserIdAndMessages = async () => {
@@ -29,7 +31,6 @@ function Chat({ recipientId, recipientName }) {
           `${BASE_URL}/messages/${fetchedUserId}/${recipientId}`
         );
 
-        // Modify each message to add the date field
         const messagesWithDate = messagesRes.data.map((msg) => {
           const date = msg.timestamp.split("T")[0]; // Extract date from timestamp
           return { ...msg, date }; // Add date to each message object
@@ -82,7 +83,7 @@ function Chat({ recipientId, recipientName }) {
     }
   };
 
-  // Change 1: Grouping messages by date
+  // Grouping messages by date
   const groupMessagesByDate = (messages) => {
     return messages.reduce((acc, msg) => {
       const date = msg.date; // Ensure 'date' is set when saving messages
@@ -92,7 +93,7 @@ function Chat({ recipientId, recipientName }) {
     }, {});
   };
 
-  // Change 2: Format date for the separator (e.g., Today, Yesterday)
+  // Format date for the separator (e.g., Today, Yesterday)
   const formatDate = (dateStr) => {
     const today = new Date().toISOString().split("T")[0];
     const yesterdayDate = new Date();
@@ -120,20 +121,43 @@ function Chat({ recipientId, recipientName }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // Scroll to the bottom when a new message is sent or received
+  const scrollToInput = () => {
+    if (chatInputRef.current) {
+      chatInputRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Scroll to bottom when new messages arrive or when component mounts
+  useEffect(() => {
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <div className={styles.chatContainer}>
       <h3 className={styles.chatHeading}>
         Chatting with{" "}
-        <span className={styles.recipientName}>
+     
           {recipientName.toUpperCase()} 💬
-        </span>
+        
+        {/* Downward arrow for scrolling */}
+        <button
+  className={styles.scrollToInputButton}
+  onClick={scrollToInput}
+  aria-label="Scroll to input"
+>
+  <i className="fas fa-chevron-circle-down" style={{ color: '#2e7be6' }}></i> {/* Blue color */}
+</button>
+
+
+
       </h3>
 
-      {/* Change 3: Group messages by date and render them with a separator */}
-      <div className={styles.chatMessages}>
+      <div className={styles.chatMessages} ref={chatMessagesRef}>
         {Object.entries(groupMessagesByDate(messages)).map(([date, msgs]) => (
           <div key={date}>
-            {/* Change 4: Display date separator */}
             <div className={styles.dateSeparator}>{formatDate(date)}</div>
             {msgs.map((msg, idx) => (
               <div
@@ -159,9 +183,8 @@ function Chat({ recipientId, recipientName }) {
           placeholder="Type a message..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          ref={chatInputRef} // Attach reference to input
         />
-
-        
 
         <div className={styles.chatButtons}>
           <button className={styles.chatSend} onClick={sendMessage}>
