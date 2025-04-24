@@ -6,6 +6,7 @@ const messageSchema = new mongoose.Schema({
   message: { type: String, required: false }, 
   timestamp: { type: String, required: true },
   date: String,      
+  isRead: { type: Boolean, default: false },
   createdAt: {
     type: Date,
     default: Date.now,

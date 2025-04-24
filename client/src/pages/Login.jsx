@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { API } from '../utils/api';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const Login = () => {
           <h2 className={styles.loginHeading}>Login</h2>
      
           <input
+  className={styles.inputField}
   type="text"
   name="emailOrUsername"
   placeholder="Email or Username"
@@ -54,6 +56,7 @@ const Login = () => {
 />
 
 <input
+  className={styles.inputField}
   type="password"
   name="password"
   placeholder="Password"

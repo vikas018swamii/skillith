@@ -25,7 +25,7 @@
   align-items: center;
   min-height: 100vh;
   background: var(--primary-gradient);
-  padding: 20px;
+  padding: 0rem 2rem 0rem; /* Add space at top for navbar */
 }
 
 /* Card Container */
@@ -56,7 +56,7 @@
 /* Heading */
 .loginHeading {
   font-family: var(--font-logo);
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 30px;
   color: var(--primary-color);

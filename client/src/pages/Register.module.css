@@ -5,8 +5,10 @@
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(135deg, #3f8efc, #83a4d4);
-  padding: 20px;
+  padding: 0rem 1rem 0rem;
+ 
 }
+
 
 /* Register.module.css */
 .inputField {
@@ -20,12 +22,29 @@
 }
 
 
-
+.selectField {
+  appearance: none;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%233f8efc' viewBox='0 0 24 24' width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(63, 142, 252, 0.05);
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
 /* Register.module.css */
 .inputField {
   appearance: none; 
 }
-/* Ensure the selected option's text is black when the dropdown is focused */
+
 
 
 
@@ -64,9 +83,9 @@
 /* Heading */
 .loginHeading {
   font-family: var(--font-logo);
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: var(--primary-color);
   text-align: center;
   text-transform: uppercase;
@@ -87,6 +106,7 @@
 /* Inputs and dropdowns */
 .inputField,
 .selectField {
+  
   width: 100%;  /* Ensure both inputs and dropdowns are the same width */
   padding: 12px;
   margin-bottom: 15px;
@@ -101,6 +121,7 @@
 /* Focus styling for inputs and dropdowns */
 .inputField:focus,
 .selectField:focus {
+  
   outline: none;
   border-color: var(--primary-color);
 }

@@ -1,7 +1,4 @@
 :root {
-  background-color: #f5f7fa;
-  min-height: 100vh;
-
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-logo: "Poppins", sans-serif;
 
@@ -13,118 +10,54 @@
   --hover-bg: rgba(63, 142, 252, 0.1);
 }
 
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background:linear-gradient(135deg, #3f8efc, #83a4d4) ;
+  padding: 3rem 1rem;
+}
+
 /* Layout */
 .container {
+  
   font-family: var(--font-body);
   background-color: var(--bg-color);
-
   max-width: 1200px;
-  margin: 40px auto;
+  width: 100%;
   border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
 .topButtons {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
-  justify-content: center; /* 👈 This centers the buttons */
-}
-
-
-.backButton,
-.scrollButton {
-  padding: 8px 16px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #5c6bc0;
-  color: white;
-}
-
-.scrollButton {
-  background-color: #26a69a;
-}
-
-/* Heading */
-.heading {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 40px;
-  font-weight: 700;
-}
-
-/* Match Cards Flexbox Layout */
-.matchList {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-}
-
-/* Match Card */
-.matchItem {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 300px;
-  width: 100%;
-  flex: 0 1 250px;
-}
-
-.matchItem:hover {
-  transform: scale(1.05); /* Slightly increased scale for smoother hover */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  background-color: var(--hover-bg);
-}
-
-.matchItem h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.matchItem p {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  color: rgba(47, 47, 47, 0.7);
-}
-
-/* Button wrapper */
-.buttonWrapper {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
+  margin-bottom: 2rem;
 }
 
 /* Buttons */
 .chatButton,
-.backButton {
-  background-color: var(--primary-color);
-  color: #fff;
+.backButton,
+.scrollButton {
   padding: 10px 20px;
   font-size: 1rem;
-  border: none;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
+  color: #fff;
 }
 
-.chatButton:hover,
-.backButton:hover {
-  transform: translateY(-3px); /* More subtle effect */
+.chatButton {
+  background-color: var(--primary-color);
+  position: relative;
+}
+
+.chatButton:hover {
   background-color: var(--hover-color);
 }
 
@@ -136,15 +69,85 @@
   background-color: #c82333;
 }
 
+.scrollButton {
+  background-color: #26a69a;
+}
+
+/* Heading */
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+/* No matches message */
+.noMatchesText {
+  font-size: 1.2rem;
+  color: #666;
+  padding: 2rem 1rem;
+}
+
+/* Match List Grid */
+.matchList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Match Item Card */
+.matchItem {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+  transition: all 0.3s ease;
+  flex: 0 1 250px;
+  margin: 0px 0px 20px;
+}
+
+.matchItem:hover {
+  transform: scale(1.05);
+  background-color: var(--hover-bg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.matchItem h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.matchItem p {
+  font-size: 1rem;
+  color: rgba(47, 47, 47, 0.7);
+  margin-bottom: 16px;
+}
+
+/* Button Wrapper inside card (optional) */
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .heading {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .matchItem {
-    padding: 16px;
     flex: 0 1 220px;
+    padding: 16px;
   }
 
   .chatButton,
@@ -152,4 +155,21 @@
     font-size: 0.9rem;
     padding: 8px 16px;
   }
+}
+
+.unreadBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

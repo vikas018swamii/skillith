@@ -19,6 +19,42 @@ router.get('/:userId/:recipientId', async (req, res) => {
   }
 });
 
+// Get unread message count for a user from a specific sender
+router.get('/unread/:userId/:senderId', async (req, res) => {
+  const { userId, senderId } = req.params;
+  try {
+    const count = await Message.countDocuments({
+      sender: senderId,
+      recipient: userId,
+      isRead: false
+    });
+    res.json({ unreadCount: count });
+  } catch (error) {
+    console.error('Error in unread count:', error);
+    res.status(500).json({ error: 'Error fetching unread count' });
+  }
+});
+
+// Mark messages as read
+router.put('/read/:userId/:senderId', async (req, res) => {
+  const { userId, senderId } = req.params;
+  try {
+    await Message.updateMany(
+      {
+        sender: senderId,
+        recipient: userId,
+        isRead: false
+      },
+      {
+        $set: { isRead: true }
+      }
+    );
+    res.json({ message: 'Messages marked as read' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error marking messages as read' });
+  }
+});
+
 // Delete all messages between two users
 router.delete('/:userId/:recipientId', async (req, res) => {
   const { userId, recipientId } = req.params;
@@ -48,6 +84,7 @@ router.post('/', async (req, res) => {
       message,
       timestamp: now.format("hh:mm A"),     // e.g., 03:21 PM
       date: now.format("YYYY-MM-DD"),     // e.g., 2025-04-20
+      isRead: false
     });
 
     await newMessage.save();

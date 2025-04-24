@@ -38,6 +38,13 @@ function Chat({ recipientId, recipientName }) {
 
         setMessages(messagesRes.data);
 
+        // Mark messages as read when chat is opened
+        if (messagesRes.data.some(msg => !msg.isRead && msg.sender === recipientId)) {
+          await axios.put(`${BASE_URL}/messages/read/${fetchedUserId}/${recipientId}`, {}, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+        }
+
         socket.on("receivePrivateMessage", (msg) => {
           if (msg.senderId === recipientId) {
             const date = msg.timestamp.split("T")[0];
@@ -72,6 +79,7 @@ function Chat({ recipientId, recipientName }) {
       message,
       timestamp: currentTime,
       date: currentDate,
+      isRead: false
     };
     try {
       await axios.post(`${BASE_URL}/messages`, msgObj);
