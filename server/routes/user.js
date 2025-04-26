@@ -10,7 +10,7 @@ router.get('/me', authMiddleware, async (req, res) => {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {
-    res.status(500).json({ msg: 'Server error' });
+    res.status(500).json({ msg: 'error: jo aapne chat.jsx se token bheja tha uske corresponding database mei user nhi mila' });
   }
 });
 

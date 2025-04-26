@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Chat from './Chat';
 import styles from './Matches.module.css';
+import { API } from '../utils/api';
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
@@ -13,7 +14,7 @@ const Matches = () => {
     const fetchMatches = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('https://skillith.onrender.com/api/users/matches', {
+        const res = await axios.get(`${API}/api/users/matches`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';  // Import the CSS module
+import { API } from '../utils/api';
 
 const skills = ['JavaScript', 'C++', 'Python', 'React', 'Node.js', 'HTML/CSS', 'Java', 'SQL'];
 
@@ -26,7 +27,7 @@ function Register() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post('https://skillith.onrender.com/api/auth/register', form);
+      await axios.post(`${API}/api/auth/register`, form);
       alert('Registered successfully!');
       navigate('/');
     } catch (err) {

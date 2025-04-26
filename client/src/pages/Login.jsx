@@ -2,12 +2,13 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
+import { API } from '../utils/api';
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: '', password: '' });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -15,10 +16,10 @@ function Login() {
     navigate(-1);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://skillith.onrender.com/api/auth/login', form);
+      const res = await axios.post(`${API}/api/auth/login`, form);
       localStorage.setItem('token', res.data.token);
       alert('Logged in!');
       navigate('/matches');
@@ -45,12 +46,14 @@ function Login() {
             placeholder="Password"
             onChange={handleChange}
           />
-          <button type="submit" className={styles.submitButton}>Login</button>
-          <button type="button" className={styles.backButton} onClick={handleBack}>Back</button>
+          <div className={styles.buttonGroup}>
+            <button type="submit" className={styles.submitButton}>Login</button>
+            <button type="button" className={styles.backButton} onClick={handleBack}>Back</button>
+          </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

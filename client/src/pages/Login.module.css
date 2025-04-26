@@ -1,117 +1,141 @@
-/* Full-screen wrapper to center login box */
+:root {
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-logo: "Poppins", sans-serif;
+
+  --primary-color: #3f8efc;
+  --hover-color: #2e7be6;
+  --text-color: #2f2f2f;
+  --bg-color: #f5f7fa;
+  --hover-bg: rgba(63, 142, 252, 0.1);
+}
+
 .pageWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: var(--bg-color);
-    padding: 20px;
-  }
-  
-  /* Login form container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-color), #83a4d4);
+  padding: 20px;
+}
+
+.loginContainer {
+  font-family: var(--font-body);
+  background-color: #fff;
+  color: var(--text-color);
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loginContainer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginHeading {
+  font-family: var(--font-logo);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--primary-color);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inputField {
+  font-family: var(--font-body);
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--hover-bg);
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.submitButton,
+.backButton {
+  font-family: var(--font-body);
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  width: 50%;
+}
+
+.submitButton {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.submitButton:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--hover-bg);
+}
+
+.backButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.backButton:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .loginContainer {
-    font-family: var(--font-body);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 30px;
-    max-width: 400px;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
   }
-  
-  /* Form layout */
-  .formBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Heading */
+
   .loginHeading {
-    font-family: var(--font-body); /* Unified font */
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    text-align: center;
+    font-size: 1.75rem;
   }
-  
-  /* Inputs */
-  .inputField {
-    font-family: var(--font-body);
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: white;
-  }
-  
-  .inputField:focus {
-    outline: none;
-    border-color: var(--primary-color);
-  }
-  
-  /* Buttons */
+
+  .inputField,
   .submitButton,
   .backButton {
-    font-family: var(--font-body);
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
   }
-  
-  .submitButton {
-    background-color: var(--primary-color);
-    color: white;
-    margin-bottom: 10px;
-  }
-  
-  .submitButton:hover {
-    background-color: var(--hover-color);
-  }
-  
-  .backButton {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .backButton:hover {
-    background-color: #c82333;
-  }
-  
+}
 
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .loginContainer {
-      padding: 20px;
-      max-width: 90%;
-    }
-  
-    .loginHeading {
-      font-size: 1.75rem;
-    }
-  
-    .inputField,
-    .submitButton,
-    .backButton {
-      font-size: 0.875rem;
-    }
+@media (max-width: 480px) {
+  .loginContainer {
+    padding: 25px 18px;
   }
-  
-  @media (max-width: 480px) {
-    .backButton {
-      margin-top: 5px;
-    }
+
+  .inputField,
+  .submitButton,
+  .backButton {
+    font-size: 0.9rem;
   }
-  
-  .loginContainer:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-  }
+}

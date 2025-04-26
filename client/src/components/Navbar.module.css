@@ -7,15 +7,16 @@
   background-color: var(--bg-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 1000;
   font-family: var(--font-body);
   transition: background-color 0.3s ease, box-shadow 0.3s ease; 
-  border-radius: 8px; 
+
+  padding: 20px 40px; /* Increased padding for thicker navbar */
 }
 
 .navbar:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Increase shadow on hover */
+  box-shadow: 0 6px 12px rgba(63, 142, 252, 0.15); 
 }
 
 
@@ -35,30 +36,30 @@
 }
 
 .menuButton {
-  display: none; /* Hidden by default */
+  display: none; 
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   transition: transform 0.3s ease;
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 1000; 
 }
 
 .menuButton .line {
-  width: 22.5px; /* Adjusted to 0.75 of the original size (30px) */
-  height: 3px; /* Adjusted to 0.75 of the original size (4px) */
+  width: 22.5px; 
+  height: 3px;
   background-color: var(--primary-color);
-  margin: 3.75px 0; /* Adjusted to 0.75 of the original spacing (5px) */
-  border-radius: 2px; /* Slightly rounded edges for a smoother look */
+  margin: 3.75px 0; 
+  border-radius: 2px; 
   transition: transform 0.3s ease;
 }
 
 .menuButton:hover .line {
-  background-color: var(--hover-color); /* Hover effect for the lines */
+  background-color: var(--hover-color); 
 }
 
 .menuButton:hover {
-  transform: scale(1.1); /* Slight scale-up effect on hover */
+  transform: scale(1.1); 
 }
 
 .navLinks {
