@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -8,14 +8,10 @@ const userSchema = new mongoose.Schema({
   wantToLearn: String,
   isVerified: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  verificationToken: String
+  verificationToken: String,
 });
 
-
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
-
-
-'99'

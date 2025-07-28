@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { API } from '../utils/api';
-import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,13 +11,10 @@ const Login = () => {
     emailOrUsername: '',
     password: ''
   });
-  
-  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  
 
   const handleBack = () => {
     navigate(-1);
@@ -44,26 +40,26 @@ const Login = () => {
       <div className={styles.loginContainer}>
         <form className={styles.formBox} onSubmit={handleSubmit}>
           <h2 className={styles.loginHeading}>Login</h2>
-     
-          <input
-  className={styles.inputField}
-  type="text"
-  name="emailOrUsername"
-  placeholder="Email or Username"
-  value={form.emailOrUsername}
-  onChange={handleChange}
-  required
-/>
 
-<input
-  className={styles.inputField}
-  type="password"
-  name="password"
-  placeholder="Password"
-  value={form.password}
-  onChange={handleChange}
-  required
-/>
+          <input
+            className={styles.inputField}
+            type="text"
+            name="emailOrUsername"
+            placeholder="Email or Username"
+            value={form.emailOrUsername}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            className={styles.inputField}
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
 
           <div className={styles.buttonGroup}>
             <button type="submit" className={styles.submitButton}>Login</button>

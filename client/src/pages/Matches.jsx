@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Chat from './Chat';
 import styles from './Matches.module.css';
 import { API } from '../utils/api';
 
@@ -8,25 +8,8 @@ const Matches = () => {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedUser, setSelectedUser] = useState(null);
   const [unreadCounts, setUnreadCounts] = useState({});
-
-  // Load selected user from localStorage on mount
-  useEffect(() => {
-    const storedUser = localStorage.getItem('selectedUser');
-    if (storedUser) {
-      setSelectedUser(JSON.parse(storedUser));
-    }
-  }, []);
-
-  // Save selected user to localStorage whenever it changes
-  useEffect(() => {
-    if (selectedUser) {
-      localStorage.setItem('selectedUser', JSON.stringify(selectedUser));
-    } else {
-      localStorage.removeItem('selectedUser');
-    }
-  }, [selectedUser]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -50,7 +33,6 @@ const Matches = () => {
     fetchMatches();
   }, []);
 
-  // Fetch unread message counts
   useEffect(() => {
     const fetchUnreadCounts = async () => {
       try {
@@ -83,54 +65,40 @@ const Matches = () => {
     }
   }, [matches]);
 
+  const handleChatClick = (user) => {
+    navigate(`/chat/${user._id}`);
+  };
+
   if (loading) return <p>Loading matches...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.container}>
-        {!selectedUser && <h2 className={styles.heading}>Skill Matches</h2>}
-
-        {selectedUser ? (
-          <div>
-            <button
-              onClick={() => setSelectedUser(null)}
-              className={styles.backButton}
-            >
-              Back to Matches
-            </button>
-            <Chat
-              recipientId={selectedUser._id}
-              recipientName={selectedUser.username}
-            />
-          </div>
+        <h2 className={styles.heading}>Skill Matches</h2>
+        {matches.length === 0 ? (
+          <p className={styles.noMatchesText}>No matches ...</p>
         ) : (
-          <>
-            {matches.length === 0 ? (
-              <p className={styles.noMatchesText}>No matches ...</p>
-            ) : (
-              <ul className={styles.matchList}>
-                {matches.map((user) => (
-                  <li key={user._id} className={styles.matchItem}>
-                    <h3>{user.username}</h3>
-                    <p>Knows: {user.knownSkill}</p>
-                    <p>Wants to learn: {user.wantToLearn}</p>
-                    <button
-                      onClick={() => setSelectedUser(user)}
-                      className={styles.chatButton}
-                    >
-                      Chat
-                      {unreadCounts[user._id] > 0 && (
-                        <span className={styles.unreadBadge}>
-                          {unreadCounts[user._id]}
-                        </span>
-                      )}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </>
+          <ul className={styles.matchList}>
+            {matches.map((user) => (
+              <li key={user._id} className={styles.matchItem}>
+                <h3>{user.username}</h3>
+                <p>Knows: {user.knownSkill}</p>
+                <p>Wants to learn: {user.wantToLearn}</p>
+                <button
+                  onClick={() => handleChatClick(user)}
+                  className={styles.chatButton}
+                >
+                  Chat
+                  {unreadCounts[user._id] > 0 && (
+                    <span className={styles.unreadBadge}>
+                      {unreadCounts[user._id]}
+                    </span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </div>

@@ -1,42 +1,40 @@
 .pageWrapper {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #3f8efc, #83a4d4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-     padding: 0rem 2rem 4rem; /* Add space at top for navbar */
-    
-  }
-  
-  .formContainer {
-  
-    background-color: #ffffff;
-    padding: 2rem 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(63, 142, 252, 0.15);
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .title {
-    font-family: var(--font-logo);
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-.formContainer {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    font-family: var(--font-body);
-    color: var(--text-color);
-  }
+  min-height: 100vh;
+  background: linear-gradient(135deg, #3f8efc, #83a4d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 2rem 4rem; /* Add space at top for navbar */
+}
 
-  .selectField {
+.formContainer {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(63, 142, 252, 0.15);
+  max-width: 500px;
+  width: 100%;
+}
+
+.title {
+  font-family: var(--font-logo);
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.formContainer {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-body);
+  color: var(--text-color);
+}
+
+.selectField {
   appearance: none;
   width: 100%;
   padding: 0.75rem 1rem;
@@ -55,70 +53,64 @@
   font-family: var(--font-body);
 }
 
-
-
 .selectField {
-    appearance: none;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    font-size: 1rem;
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg fill='%233f8efc' viewBox='0 0 24 24' width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1rem;
-    color: var(--text-color);
-    box-shadow: 0 4px 10px rgba(63, 142, 252, 0.05);
-    transition: all 0.3s ease;
-    font-family: var(--font-body);
-  }
-  
+  appearance: none;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%233f8efc' viewBox='0 0 24 24' width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(63, 142, 252, 0.05);
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
 
-  
-  
-  .formContainer h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    font-size: 1.75rem;
-    font-family: var(--font-logo);
-  }
-  
-  .inputField,
-  .selectField {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #d1d9e6;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    background-color: #fff;
-  }
-  
-  .inputField:focus,
-  .selectField:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--hover-bg);
-  }
-  
-  .updateButton {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--primary-color);
-    color: #fff;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .updateButton:hover {
-    background-color: var(--hover-color);
-  }
-  
+.formContainer h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  font-family: var(--font-logo);
+}
+
+.inputField,
+.selectField {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d9e6;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+}
+
+.inputField:focus,
+.selectField:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--hover-bg);
+}
+
+.updateButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.updateButton:hover {
+  background-color: var(--hover-color);
+}

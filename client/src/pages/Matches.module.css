@@ -1,15 +1,3 @@
-:root {
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-logo: "Poppins", sans-serif;
-
-  --primary-color: #3f8efc;
-  --hover-color: #2e7be6;
-
-  --text-color: #2f2f2f;
-  --bg-color: #f5f7fa;
-  --hover-bg: rgba(63, 142, 252, 0.1);
-}
-
 .pageWrapper {
   display: flex;
   justify-content: center;
@@ -19,7 +7,6 @@
   padding: 3rem 1rem;
 }
 
-/* Layout */
 .container {
   
   font-family: var(--font-body);
@@ -39,7 +26,6 @@
   margin-bottom: 2rem;
 }
 
-/* Buttons */
 .chatButton,
 .backButton,
 .scrollButton {
@@ -73,7 +59,6 @@
   background-color: #26a69a;
 }
 
-/* Heading */
 .heading {
   font-size: 2rem;
   font-weight: 700;
@@ -81,14 +66,12 @@
   margin-bottom: 2rem;
 }
 
-/* No matches message */
 .noMatchesText {
   font-size: 1.2rem;
   color: #666;
   padding: 2rem 1rem;
 }
 
-/* Match List Grid */
 .matchList {
   list-style: none;
   display: flex;
@@ -99,7 +82,6 @@
   margin: 0;
 }
 
-/* Match Item Card */
 .matchItem {
   background-color: #ffffff;
   border-radius: 16px;
@@ -131,7 +113,6 @@
   margin-bottom: 16px;
 }
 
-/* Button Wrapper inside card (optional) */
 .buttonWrapper {
   display: flex;
   justify-content: center;
@@ -139,7 +120,6 @@
   width: 100%;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .heading {
     font-size: 1.75rem;

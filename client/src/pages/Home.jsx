@@ -1,10 +1,9 @@
 import React from "react";
-import styles from "./Home.module.css"; // Import the CSS Module
+import styles from "./Home.module.css";
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h2>Exchange Skills and Learn Together!</h2> <br />
@@ -15,7 +14,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className={styles.about}>
         <h3>What is SKILLITH?</h3>
         <p>
@@ -26,7 +24,6 @@ const Home = () => {
         </p>
       </section>
 
-      {/* Features Section */}
       <section id="features" className={styles.features}>
         <h3>Features</h3>
         <div className={styles.featureItems}>
@@ -53,7 +50,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer Section */}
       <footer id="contact" className={styles.footer}>
         <div className={styles.footerContent}>
           <p>&copy; 2025 Skillith. All rights reserved.</p>

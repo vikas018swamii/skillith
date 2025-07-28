@@ -1,34 +1,12 @@
-:root {
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-logo: "Poppins", sans-serif;
-
-  --primary-color: #3f8efc;
-  --primary-gradient: linear-gradient(135deg, #3f8efc, #83a4d4);
-  --hover-color: #2e7be6;
-  --danger-color: #dc3545;
-  --danger-hover: #c82333;
-
-  --text-color: #1e1e2f;
-  --bg-color: #f7f9fc;
-  --hover-bg: rgba(63, 142, 252, 0.1);
-  --card-bg: #ffffff;
-
-  --radius: 12px;
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Layout */
 .pageWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background: var(--primary-gradient);
-  padding: 0rem 2rem 0rem; /* Add space at top for navbar */
+  padding: 0rem 2rem 0rem; 
 }
 
-/* Card Container */
 .loginContainer {
   background-color: var(--card-bg);
   color: var(--text-color);
@@ -46,14 +24,12 @@
   box-shadow: var(--hover-shadow);
 }
 
-/* Form Box */
 .formBox {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-/* Heading */
 .loginHeading {
   font-family: var(--font-logo);
   font-size: 1.5rem;
@@ -65,7 +41,6 @@
   letter-spacing: 1px;
 }
 
-/* Inputs */
 .inputField {
   font-family: var(--font-body);
   padding: 14px 18px;
@@ -83,7 +58,6 @@
   box-shadow: 0 0 0 3px var(--hover-bg);
 }
 
-/* Buttons */
 .buttonGroup {
   display: flex;
   justify-content: space-between;
@@ -105,7 +79,6 @@
   width: 100%;
 }
 
-/* Primary Button */
 .submitButton {
   background-color: var(--primary-color);
   color: #fff;
@@ -117,7 +90,6 @@
   transform: translateY(-2px);
 }
 
-/* Danger Button */
 .backButton {
   background-color: var(--danger-color);
   color: #fff;
@@ -129,7 +101,6 @@
   transform: translateY(-2px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .loginContainer {
     padding: 36px 24px;

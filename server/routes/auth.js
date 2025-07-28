@@ -3,16 +3,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const crypto = require('crypto');
-const sendVerificationEmail = require('../utils/sendVerificationEmail'); // Import the email sending function
+const sendVerificationEmail = require('../utils/sendVerificationEmail'); 
 const router = express.Router();
-const authenticateToken = require('../middleware/authMiddleware'); // Import the authentication middleware
+const authenticateToken = require('../middleware/authMiddleware'); 
 const sendDeleteEmail = require('../utils/sendDeleteEmail');
 
-// inside your route
-
-
-
-// Register
 router.post('/register', async (req, res) => {
   const { username, password, knownSkill, wantToLearn, email } = req.body;
 
@@ -20,13 +15,10 @@ router.post('/register', async (req, res) => {
     const existingUser = await User.findOne({ username });
     if (existingUser) return res.status(400).json({ msg: 'Username already exists' });
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Generate a verification token
     const verificationToken = crypto.randomBytes(20).toString('hex');
 
-    // Create a new user with the hashed password and verification token
     const newUser = new User({
       username,
       password: hashedPassword,
@@ -34,13 +26,11 @@ router.post('/register', async (req, res) => {
       wantToLearn,
       email,
       verificationToken,
-      isVerified: false,  // Set user as unverified initially
+      isVerified: false,  
     });
 
-    // Save the new user to the database
     await newUser.save();
 
-    // Send the verification email
     sendVerificationEmail(email, verificationToken);
    
 
@@ -55,32 +45,27 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Verify Email
 router.get('/verify-email', async (req, res) => {
-  const { token } = req.query; // Get the token from the query parameters
+  const { token } = req.query; 
   console.log('Token received:', token);
 
   try {
-    // Find the user with the matching verification token
     const user = await User.findOne({ verificationToken: token });
 
     if (!user) {
       return res.status(400).send('Invalid verification token.');
     }
 
-    // Mark the user as verified
     user.isVerified = true;
-    console.log('User verified:', user.isVerified); // Log user.isVerified
+    console.log('User verified:', user.isVerified);
 
-    user.verificationToken = undefined; // Remove the verification token once it's used
+    user.verificationToken = undefined; 
 
-    // Save the updated user
     await user.save();
 
-    // Send JSON response with success message and updated verification status
     res.status(200).json({
       msg: 'Email verified successfully!',
-      isVerified: user.isVerified, // Send the updated isVerified status
+      isVerified: user.isVerified, 
     });
   } catch (err) {
     console.error(err);
@@ -95,7 +80,6 @@ router.post('/login', async (req, res) => {
 
 
   try {
-    // Find user by either email or username
     const user = await User.findOne({
       $or: [{ email: emailOrUsername }, { username: emailOrUsername }]
     });
@@ -103,20 +87,12 @@ router.post('/login', async (req, res) => {
     console.log('User found:', user);
 
     if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
-
-    // Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
-
-    // Check if email is verified
     if (!user.isVerified) {
       return res.status(400).json({ msg: 'Please verify your email first.' });
     }
 
-
-
-
-    // Create JWT
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '2h' });
 
     res.json({
@@ -135,12 +111,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
-
-// DELETE /api/users/delete
 router.delete('/delete', authenticateToken, async (req, res) => {
   try {
-    const userId = req.user.id; // assuming user ID is stored in JWT payload
+    const userId = req.user.id; 
     const deletedUser = await User.findByIdAndDelete(userId);
 
     if (!deletedUser) {
@@ -154,7 +127,6 @@ router.delete('/delete', authenticateToken, async (req, res) => {
   }
 });
 
-// request-delete route
 router.post('/request-delete', async (req, res) => {
   try {
 
@@ -180,7 +152,6 @@ router.post('/request-delete', async (req, res) => {
   }
 });
 
-// delete-confirm route
 router.delete('/delete-confirm/:token', async (req, res) => {
   try {
     const decoded = jwt.verify(req.params.token, process.env.JWT_SECRET);
@@ -195,7 +166,6 @@ router.delete('/delete-confirm/:token', async (req, res) => {
   }
 });
 
-// Update user details
 router.put('/update', authenticateToken, async (req, res) => {
   try {
     const { username, email, password, knownSkill, wantToLearn } = req.body;
@@ -218,8 +188,6 @@ router.put('/update', authenticateToken, async (req, res) => {
   }
 });
 
-
-// Get current user details
 router.get('/details', authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -231,8 +199,5 @@ router.get('/details', authenticateToken, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-
-
 
 module.exports = router;

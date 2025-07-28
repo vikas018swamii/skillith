@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
   sender: { type: mongoose.Schema.Types.ObjectId, required: true },
   recipient: { type: mongoose.Schema.Types.ObjectId, required: true },
-  message: { type: String, required: false }, 
+  message: { type: String, required: false },
+  photos: [{ type: String }],
   timestamp: { type: String, required: true },
-  date: String,      
+  date: String,
   isRead: { type: Boolean, default: false },
   createdAt: {
     type: Date,
@@ -13,5 +14,5 @@ const messageSchema = new mongoose.Schema({
   },
 });
 
-const Message = mongoose.model('Message', messageSchema);
+const Message = mongoose.model("Message", messageSchema);
 module.exports = Message;

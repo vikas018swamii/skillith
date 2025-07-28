@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { API } from '../utils/api'; // Import your API constant
+import { API } from '../utils/api'; 
 
 function VerifyEmail() {
   const navigate = useNavigate();
@@ -10,18 +10,16 @@ function VerifyEmail() {
 
   useEffect(() => {
     if (token) {
-      // Make a request to your backend API to verify the token
       axios
-        .get(`${API}/api/auth/verify-email?token=${token}`) // use full API path
+        .get(`${API}/api/auth/verify-email?token=${token}`) 
         .then(response => {
-          console.log(response.data); // Log the response data for debugging
+          console.log(response.data); 
 
-          // If isVerified is true, show success message
           if (response.data.isVerified) {
             alert('Email successfully verified!');
           }
 
-          navigate('/login');  // Redirect to login page after successful verification
+          navigate('/login'); 
         })
         .catch(error => {
           alert(error.response?.data || 'Verification failed');

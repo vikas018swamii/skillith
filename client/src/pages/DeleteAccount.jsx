@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './DeleteAccount.module.css';
 import { API } from '../utils/api';
 

@@ -1,58 +1,54 @@
-/* DeleteAccount.module.css */
-
 .pageWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 4.5rem); /* Adjust based on actual navbar height */
-    padding: 0rem 2rem 0rem;
-    background-color: var(--bg-color);
-    font-family: var(--font-body);
-    background: linear-gradient(135deg, #ff4b2b, #ff416c);
-  }
-  
-  
-  .container {
-    max-width: 400px;
-    width: 100%;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e0e0e0;
-    font-family: var(--font-body);
-    color: var(--text-color);
-  }
-  
-  .heading {
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: center;
-    color: #e63946;
-    margin-bottom: 1rem;
-  }
-  
-  .description {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #4a4a4a;
-    font-size: 0.95rem;
-  }
-  
-  .button {
-    width: 100%;
-    background-color: #e63946;
-    color: white;
-    font-weight: 600;
-    padding: 0.75rem 1rem;
-    border: none;
-    border-radius: 0.75rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: var(--font-body);
-  }
-  
-  .button:hover {
-    background-color: #c62828;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 4.5rem);
+  padding: 0rem 2rem 0rem;
+  background-color: var(--bg-color);
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  font-family: var(--font-body);
+  color: var(--text-color);
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #e63946;
+  margin-bottom: 1rem;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #4a4a4a;
+  font-size: 0.95rem;
+}
+
+.button {
+  width: 100%;
+  background-color: #e63946;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.button:hover {
+  background-color: #c62828;
+}
