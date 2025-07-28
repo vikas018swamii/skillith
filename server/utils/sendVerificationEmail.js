@@ -15,6 +15,7 @@ const sendVerificationEmail = (toEmail, verificationToken) => {
     subject: "Email Verification",
     text: `Please verify your email by clicking the following link: 
      https://skillith.vercel.app/verify-email?token=${verificationToken}`,
+     
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
