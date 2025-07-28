@@ -1,1 +1,1 @@
-export const API="http://localhost:5000"; // use this in production
+export const API="https://skillith.onrender.com"; // use this in production
