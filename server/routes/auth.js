@@ -49,7 +49,7 @@ router.get('/verify-email', async (req, res) => {
   const { token } = req.query; 
   console.log('Token received:', token);
 
-  try {h
+  try {
     const user = await User.findOne({ verificationToken: token });
 
     if (!user) {
