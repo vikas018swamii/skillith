@@ -13,7 +13,7 @@ const sendDeleteEmail = (toEmail, deleteToken) => {
     from: "vikasswamionline@gmail.com",
     to: toEmail,
     subject: "Confirm Your Account Deletion",
-    text: `You requested to delete your Skillith account.\n\nClick the link below to confirm deletion:\nhttps://skillith.vercel.app/delete-confirm/${deleteToken}\n\n⚠️ This link expires in 15 minutes. If you didn't request this, ignore the email.`,
+    text: `You requested to delete your Skillith account.\n\nClick the link below to confirm deletion:\nhttp://localhost:5173/delete-confirm/${deleteToken}\n\n⚠️ This link expires in 15 minutes. If you didn't request this, ignore the email.`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
